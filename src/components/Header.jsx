@@ -1,7 +1,6 @@
 
 import * as React from "react";
 import { List } from 'react-bootstrap-icons';
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import Login from "./Login";
 import MisReservas from "./MisReservas";
@@ -12,8 +11,8 @@ export default function Header() {
   return (
     <BrowserRouter>
       <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
-          <div class="container-fluid">
+        <nav className="navbar navbar-expand-lg navbar-light bg-white">
+          <div className="container-fluid">
             <button
               class="navbar-toggler"
               type="button"
