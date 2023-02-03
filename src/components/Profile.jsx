@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 export default function Profile() {
   const dispatch = useDispatch();
   const userNR = useSelector(state => state.userNR);
-  console.log(userNR);
+  console.log(dd);
   return (
     <div className="">
       <h1>Profile</h1>
