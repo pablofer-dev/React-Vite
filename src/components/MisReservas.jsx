@@ -26,9 +26,8 @@ export default function MisReservas() {
   const { reservas } = useSelector(state => state.reservas);
   const dispatch = useDispatch();
   if (id) {
-    /* `http://localhost/api/auth/misreservas?id=${"id"}` */
     useEffect(() => {
-      axios.post("http://localhost/api/auth/misreservas?id=1")
+      axios.post(`http://localhost/api/auth/misreservas?id=${id}`)
         .then((res) => {
           console.log(res.data);
           dispatch({
