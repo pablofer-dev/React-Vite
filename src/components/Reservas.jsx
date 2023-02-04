@@ -52,7 +52,6 @@ export default function Reservas() {
                     type: "user2/setUser",
                     payload: { dispatchArray2 }
                 });
-                console.log(user);
             })
             .catch((err) => {
                 console.log(err);

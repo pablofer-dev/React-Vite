@@ -2,12 +2,14 @@ import React from 'react'
 import '../Register.css'
 import axios from 'axios'
 
-import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from "react-router-dom";
+
 
 export default function Login() {
   const dispatch = useDispatch();
-  const dd = useSelector(state => state.login);
+  const navigate = useNavigate();
+
   return (
     <div className="">
       <div className="form" id='form1'>
@@ -75,6 +77,7 @@ export default function Login() {
                     }
                   })
                   console.log("LOGEADO");
+                  navigate("/mis-reservas");
                 }
                 )
               }
@@ -111,7 +114,6 @@ export default function Login() {
                 'Content-Type': 'application/json',
               }
             }).then((res) => {
-
               const tokenRes = res.data.token;
               let token = tokenRes.substring(tokenRes.indexOf("|") + 1);
               let id = tokenRes.substring(0, tokenRes.indexOf("|"));
@@ -122,7 +124,7 @@ export default function Login() {
                   token: token
                 }
               })
-              console.log("LOGEADO");
+              navigate("/mis-reservas");
             }
             )
 

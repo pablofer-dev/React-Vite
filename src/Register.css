@@ -32,7 +32,17 @@ body {
 .form_input {
     width: 60%;
 }
-
+.botonReserva {
+    width: 100%;
+    opacity: 80%;
+    font-weight: bold !important;
+}
+.botonReserva:hover {
+    width: 100%;
+    opacity: 100%;
+    font-weight: bold !important;
+    transition: 0.5 ease all;
+}
 .footer {
     text-align: center;
 }
