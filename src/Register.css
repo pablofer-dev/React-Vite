@@ -32,37 +32,60 @@ body {
 .form_input {
     width: 60%;
 }
+
+.botonReservar {
+    font-weight: bolder;
+    background-color: #00a65a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+
+    width: 100%;
+    opacity: 80%;
+}
+
+#horasDisponiblesText,
+#reservar {
+    display: none;
+}
+
 .botonReserva {
     width: 100%;
     opacity: 80%;
     font-weight: bold !important;
 }
+
 .botonReserva:hover {
     width: 100%;
     opacity: 100%;
     font-weight: bold !important;
     transition: 0.5 ease all;
 }
+
 .footer {
     text-align: center;
 }
+
 .form__input {
     border-radius: 0.2rem;
     border: 1px solid #ccc;
     padding: 0.3rem;
     padding-right: 6rem;
 }
+
 .form__input2 {
     border-radius: 0.2rem;
     border: 1px solid #ccc;
     padding: 0.5rem;
     width: 30%;
 }
+
 #form1 {
     display: none;
 }
+
 .form__input2:hover {
     background-color: rgba(0, 128, 0, 0.342);
-    transition: 0.3s ease all; 
+    transition: 0.3s ease all;
     border: 1px solid rgb(5, 5, 5);
 }

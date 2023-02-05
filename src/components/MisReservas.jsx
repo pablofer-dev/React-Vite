@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { useEffect } from "react";
 
+
 export default function MisReservas() {
   function deleteReserva(params) {
     /* Axios dd crsf token  */
@@ -12,7 +13,6 @@ export default function MisReservas() {
     axios.defaults.xsrfCookieName = "csrftoken";
     axios.delete(`http://localhost/api/auth/deletereservas?id=${params}`)
       .then((res) => {
-        console.log(res);
         dispatch({
           type: "misreservas/setReserva",
           payload: res.data
@@ -29,7 +29,6 @@ export default function MisReservas() {
     useEffect(() => {
       axios.post(`http://localhost/api/auth/misreservas?id=${id}`)
         .then((res) => {
-          console.log(res.data);
           dispatch({
             type: "misreservas/setReserva",
             payload: res.data
@@ -67,10 +66,9 @@ export default function MisReservas() {
     );
   }
   else {
-    console.log("No estas logeado");
     return (
       <div className="">
-        <h1>No estas logeado</h1>
+        <h1 className="text-center">No estas logeado</h1>
       </div>
     );
   }
