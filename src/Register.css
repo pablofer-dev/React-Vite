@@ -33,6 +33,17 @@ body {
     width: 60%;
 }
 
+.botones {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.botones2 {
+    width: 10%;
+    font-weight: 100 !important;
+    display: flex;
+    justify-content: space-between;
+}
 .botonReservar {
     font-weight: bolder;
     background-color: #00a65a;

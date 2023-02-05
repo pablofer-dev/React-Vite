@@ -19,7 +19,6 @@ export default class Reservar extends React.Component {
             document.getElementById('reservar').style.display = 'block';
             let reserva = document.getElementById('reserva');
             createRoot(document.getElementById('reserva')).render(<Form id={selectedId} />);
-
         }
     }
 
@@ -40,7 +39,7 @@ export default class Reservar extends React.Component {
                                 let hora = element.hora
                                 hora = hora.substring(0, hora.length - 3);
                                 horasDiv.insertAdjacentHTML('beforeend',
-                                    `<button class="btn btn-success text-white fs-2" id=${element.id}>${hora}</button>`
+                                    `<button class="btn btn-primary botones2 text-white fs-2" id=${info.event['id']} >${hora}</button>`
                                 );
                             });
                             window.scrollTo(0, document.body.scrollHeight);
@@ -55,7 +54,7 @@ export default class Reservar extends React.Component {
                     </div>
                 </div>
                 <div id="reservar" className='container'>
-                    <div id="reserva" className="d-flex gap-3 justify-content-center" onClick={this.handleClick}>
+                    <div id="reserva" className="d-flex gap-3 justify-content-center">
 
                     </div>
                 </div>

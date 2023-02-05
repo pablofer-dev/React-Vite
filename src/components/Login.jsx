@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
-
+import Swal from 'sweetalert2'
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -76,7 +76,11 @@ export default function Login() {
                       token: token
                     }
                   })
-                  console.log("LOGEADO");
+                  Swal.fire({
+                    title: 'Logeado',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                  })
                   navigate("/mis-reservas");
                 }
                 )
@@ -124,11 +128,16 @@ export default function Login() {
                   token: token
                 }
               })
+              Swal.fire({
+                title: 'Logeado',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
               navigate("/mis-reservas");
             }
             )
 
-          }}>Registrar</button>
+          }}>Login</button>
         </div>
       </div>
     </div>
