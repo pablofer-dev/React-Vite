@@ -4,7 +4,10 @@ import axios from 'axios'
 
 import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
+
 import Swal from 'sweetalert2'
+import { SpinnerCircularFixed } from 'spinners-react';
+import { useState } from 'react';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -47,7 +50,7 @@ export default function Login() {
             <input className="form__input" type="password" id="confirmPassword" placeholder="Confirmar Contraseña" />
           </div>
         </div>
-        <div class="footer">
+        <div className="footer">
           <button type="submit" class="btn btn-success" onClick={() => {
             let nombre = document.getElementById("nombre").value;
             let apellido = document.getElementById("apellido").value;
@@ -56,12 +59,12 @@ export default function Login() {
             let password = document.getElementById("password").value;
             let confirmPassword = document.getElementById("confirmPassword").value;
             if (password === confirmPassword) {
-              axios.post(`http://127.0.0.1:8000/api/auth/register?name=${nombre}&apellido=${apellido}&telefono=${telefono}&email=${email}&password=${password}`, {
+              axios.post(`https://daw202.medacarena.es/api/auth/register?name=${nombre}&apellido=${apellido}&telefono=${telefono}&email=${email}&password=${password}`, {
                 headers: {
                   'Content-Type': 'application/json',
                 }
               }).then((res) => {
-                axios.post(`http://127.0.0.1:8000/api/auth/login?email=${email}&password=${password}`, {
+                axios.post(`https://daw202.medacarena.es/api/auth/login?email=${email}&password=${password}`, {
                   headers: {
                     'Content-Type': 'application/json',
                   }
@@ -69,25 +72,34 @@ export default function Login() {
                   const tokenRes = res.data.token;
                   let token = tokenRes.substring(tokenRes.indexOf("|") + 1);
                   let id = tokenRes.substring(0, tokenRes.indexOf("|"));
-                  dispatch({
-                    type: 'login/setLogin',
-                    payload: {
-                      id: id,
-                      token: token
+                  axios.post(`https://daw202.medacarena.es/api/auth/tokenableIDUser?id=${id}`, {
+                    headers: {
+                      'Content-Type': 'application/json',
                     }
+                  }).then((res) => {
+                    dispatch({
+                      type: 'login/setLogin',
+                      payload: {
+                        id: res.data.tokenable_id,
+                        token: token
+                      }
+                    })
+
                   })
                   Swal.fire({
                     title: 'Logeado',
                     icon: 'success',
                     confirmButtonText: 'Cool'
                   })
+
                   navigate("/mis-reservas");
                 }
                 )
               }
               )
             }
-          }}>Registrar</button>
+          }
+          }>Registrar</button>
         </div>
       </div>
 
@@ -113,20 +125,36 @@ export default function Login() {
           <button type="submit" class="btn btn-success" onClick={() => {
             let email = document.getElementById("email2").value;
             let password = document.getElementById("password2").value;
-            axios.post(`http://127.0.0.1:8000/api/auth/login?email=${email}&password=${password}`, {
+            <SpinnerCircularFixed size={"10%"} style={
+              {
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)"
+              }
+            } />
+            axios.post(`https://daw202.medacarena.es/api/auth/login?email=${email}&password=${password}`, {
               headers: {
                 'Content-Type': 'application/json',
               }
             }).then((res) => {
+
               const tokenRes = res.data.token;
               let token = tokenRes.substring(tokenRes.indexOf("|") + 1);
               let id = tokenRes.substring(0, tokenRes.indexOf("|"));
-              dispatch({
-                type: 'login/setLogin',
-                payload: {
-                  id: id,
-                  token: token
+              axios.post(`https://daw202.medacarena.es/api/auth/tokenableIDUser?id=${id}`, {
+                headers: {
+                  'Content-Type': 'application/json',
                 }
+              }).then((res) => {
+                dispatch({
+                  type: 'login/setLogin',
+                  payload: {
+                    id: res.data.tokenable_id,
+                    token: token
+                  }
+                })
+
               })
               Swal.fire({
                 title: 'Logeado',

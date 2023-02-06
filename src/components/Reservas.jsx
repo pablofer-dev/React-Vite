@@ -3,16 +3,15 @@ import axios from "axios";
 
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-
+import { SpinnerCircularFixed	 } from 'spinners-react';
 
 export default function Reservas() {
-    const [usuario, setUsuario] = React.useState([]);
+    const [spinner, setSpinner] = React.useState(true);
     const dispatch = useDispatch();
     const { user } = useSelector(state => state.userNR);
     const { user2 } = useSelector(state => state.user2);
-
     React.useEffect(() => {
-        axios.post("http://127.0.0.1:8000/api/auth/reservas")
+        axios.post("https://daw202.medacarena.es/api/auth/reservas")
             .then((res) => {
                 let dispatchArray = new Array();
                 let dispatchArray2 = new Array();
@@ -62,7 +61,9 @@ export default function Reservas() {
         <div className="">
             <h3 className="text-center">Reservas de usuarios registrados</h3>
             <div className="row gap-3 ">
+            
                 {user2.dispatchArray2?.length > 0 ?
+                
                     user2.dispatchArray2?.map((user2, index) => (
                         <div key={index} className="card col-5 mx-auto">
                             <h5 className="card-header">{user2.nombre + ' ' + (user2.apellido) + ' | ' + user2.email}</h5>

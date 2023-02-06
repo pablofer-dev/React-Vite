@@ -6,8 +6,11 @@ import Login from "./Login";
 import MisReservas from "./MisReservas";
 import Reservas from "./Reservas";
 import Reservar from "./Reservar";
+import { useSelector } from 'react-redux'
+import * as Formu from "./Form";
 
 export default function Header() {
+  const { id } = useSelector(state => state.login);
   return (
     <BrowserRouter>
       <header>
@@ -32,12 +35,12 @@ export default function Header() {
                 <li class="nav-item">
                   <NavLink to="/reservas" className="nav-link" aria-current="page">Reservas</NavLink>
                 </li>
-                <li class="nav-item">
+                {id ? <li class="nav-item">
                   <NavLink to="/mis-reservas" className="nav-link" aria-current="page">Mis Reservas</NavLink>
-                </li>
-                <li class="nav-item">
+                </li> : null}
+                {!id ? <li class="nav-item">
                   <NavLink to="/login" className="nav-link" aria-current="page">Login</NavLink>
-                </li>
+                </li> : null}
 
               </ul>
             </div>
@@ -49,6 +52,7 @@ export default function Header() {
         <Route path="/login" element={<Login />} />
         <Route path="/mis-reservas" element={<MisReservas />} />
         <Route path="/reservar" element={<Reservar />} />
+        <Route path="/form" element={<Formu />} />
 
       </Routes>
     </BrowserRouter>

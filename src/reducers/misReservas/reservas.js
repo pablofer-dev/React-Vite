@@ -10,6 +10,7 @@ export const userSlice = createSlice({
         setReserva: (state, action) => {
             state.reservas = action.payload;
         },
+        
     }
 })
 

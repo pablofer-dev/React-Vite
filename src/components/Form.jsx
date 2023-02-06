@@ -57,7 +57,7 @@ const Form = (props) => {
         let cvv = document.getElementById('cvv').value;
         let menu = document.getElementById('menu').value;
         let comensales = document.getElementById('comensales').value;
-        axios.get(`http://localhost/api/auth/reservar?id=${props.id}&nombre=${nombre}&apellido=${apellido}&email=${email}&telefono=${telefono}&pais=${pais}&nacimiento=${nacimiento}&credito=${credito}&cvv=${cvv}&menu=${menu}&comensales=${comensales}`).then((response) => {
+        axios.get(`https://daw202.medacarena.es/api/auth/reservar?id=${props.id}&nombre=${nombre}&apellido=${apellido}&email=${email}&telefono=${telefono}&pais=${pais}&nacimiento=${nacimiento}&credito=${credito}&cvv=${cvv}&menu=${menu}&comensales=${comensales}`).then((response) => {
           Swal.fire({
             position: 'center',
             icon: 'success',

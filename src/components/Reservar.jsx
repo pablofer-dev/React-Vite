@@ -5,13 +5,14 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import axios from 'axios'
 import { createRoot } from 'react-dom/client';
 import Form from './Form';
+import esLocale from '@fullcalendar/core/locales/es';
 
 export default class Reservar extends React.Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
     }
-
+    
     handleClick(event) {
         if (event.target.matches("button")) {
             let selectedId = event.target.id;
@@ -25,12 +26,12 @@ export default class Reservar extends React.Component {
     render() {
         return (
             <div className="">
-                <FullCalendar
+                <FullCalendar locale={esLocale}
                     plugins={[dayGridPlugin]}
                     initialView="dayGridMonth"
-                    events='http://localhost/api/auth/eventos'
+                    events='https://daw202.medacarena.es/api/auth/eventos'
                     eventClick={function (info) {
-                        axios.get(`http://localhost/api/auth/horasreservas?id=${info.event['id']}`).then((res) => {
+                        axios.get(`https://daw202.medacarena.es/api/auth/horasreservas?id=${info.event['id']}`).then((res) => {
                             document.getElementById('horasDisponiblesText').style.display = 'block';
                             document.getElementById('reservar').style.display = 'none';
                             let horasDiv = document.getElementById('horas');
